@@ -9,4 +9,4 @@ session.load()
 hamilton = session.pick_driver('HAM').get_pos_data()
 
 #Test print
-print(hamCarData)
+print(hamilton)
