@@ -7,7 +7,7 @@ session.load(telemetry = True, laps = False, weather = False)
 
 # Get data on driver
 hamilton = session.get_driver('HAM')
-hamCarData = hamilton.load('pos_data')
+hamCarData = hamilton.get_pos_data()
 
 #Test print
-print(hamilton)
+print(hamCarData)
