@@ -12,4 +12,4 @@ hamilton = session.laps.pick_driver('HAM').pick_fastest().get_pos_data()
 # Test print
 print(hamilton)
 with open('telData.json', 'w', encoding='utf-8') as f:
-    json.dump(hamilton, f, ensure_ascii=False, indent=4)
+    json.dump(str(hamilton), f, ensure_ascii=False, indent=4)
