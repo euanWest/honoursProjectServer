@@ -10,16 +10,11 @@ session.load()
 hamilton = session.laps.pick_driver('HAM').pick_fastest().get_pos_data()
 
 # Make new dictionary
-telemetryData = {
-    "time" : float,
-    "x" : int,
-    "y" : int,
-    "z" : int
-}
+telemetryData = []
 
 # Add data to new dictionary
 for record in hamilton:
-    telemetryData.update({'time' : record.Time, 'x' : record.X, 'y' : record.Y, 'z' : record.Z})
+    telemetryData.append({'time' : record.Time, 'x' : record.X, 'y' : record.Y, 'z' : record.Z})
 
 # Test print
 print(telemetryData)
