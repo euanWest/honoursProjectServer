@@ -14,7 +14,8 @@ telemetryData = []
 
 # Add data to new dictionary
 for record in hamilton:
-    telemetryData.append({'time' : record.Time, 'x' : record.X, 'y' : record.Y, 'z' : record.Z})
+    print(record)
+    #telemetryData.append({'time' : record.Time, 'x' : record.X, 'y' : record.Y, 'z' : record.Z})
 
 # Test print
 print(telemetryData)
