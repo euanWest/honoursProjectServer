@@ -17,6 +17,6 @@ for i in range (0, 335):
     telemetryData.append({'time' : hamilton.Time[i], 'x' : hamilton.X[i], 'y' : hamilton.Y[i], 'z' : hamilton.Z[i]})
 
 # Test print
-print(telemetryData)
+#print(telemetryData)
 with open('telData.json', 'w') as file:
-    json.dump(telemetryData, file)
+    json.dump(str(telemetryData), file)
