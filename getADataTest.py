@@ -13,11 +13,10 @@ hamilton = session.laps.pick_driver('HAM').pick_fastest().get_pos_data()
 telemetryData = []
 
 # Add data to new dictionary
-for thing in range (0, 335):
-    print(hamilton.X[thing])
-    #telemetryData.append({'time' : record.Time, 'x' : record.X, 'y' : record.Y, 'z' : record.Z})
+for i in range (0, 335):
+    telemetryData.append({'time' : hamilton.Time[i], 'x' : hamilton.X[i], 'y' : hamilton.Y[i], 'z' : hamilton.Z[i]})
 
 # Test print
-#print(telemetryData)
+print(telemetryData)
 with open('telData.json', 'w') as file:
     json.dump(telemetryData, file)
