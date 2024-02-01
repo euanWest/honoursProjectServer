@@ -1,6 +1,7 @@
 # import fastf1 and json
 import fastf1
 import json
+from flask import Flask, jsonify
 
 # Create session to get telemetry data
 session = fastf1.get_session(2023, 'Silverstone', 'Q')
@@ -16,7 +17,15 @@ telemetryData = []
 for i in range (0, 335):
     telemetryData.append({'time' : hamilton.Time[i], 'x' : hamilton.X[i], 'y' : hamilton.Y[i], 'z' : hamilton.Z[i]})
 
-# Test print
-#print(telemetryData)
-with open('telData.json', 'w') as file:
-    json.dump(str(telemetryData), file)
+# Flask app to serve Json
+app = Flask(__name__)
+app.debug = True
+
+@app.route("/downloadTel")
+def updateCheck():
+     # IF Change in github repo
+    return jsonify(telemetryData.to_json())
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port=80)
+
