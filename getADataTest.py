@@ -24,7 +24,7 @@ app.debug = True
 @app.route("/downloadTel")
 def updateCheck():
      # IF Change in github repo
-    return jsonify(str(telemetryData))
+    return jsonify(json.dumps(telemetryData, indent=1))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=80)
