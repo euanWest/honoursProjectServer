@@ -15,7 +15,7 @@ telemetryData = []
 
 # Add data to new dictionary
 for i in range (0, 335):
-    telemetryData.append({'time' : hamilton.Time[i].total_seconds(), 'x' : hamilton.X[i], 'y' : hamilton.Y[i], 'z' : hamilton.Z[i]})
+    telemetryData.append({'time' : int(hamilton.Time[i].total_seconds()), 'x' : hamilton.X[i], 'y' : hamilton.Y[i], 'z' : hamilton.Z[i]})
 
 # Flask app to serve Json
 app = Flask(__name__)
