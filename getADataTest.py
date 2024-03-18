@@ -4,19 +4,27 @@ import json
 from flask import Flask, jsonify
 
 # Create session to get telemetry data
-session = fastf1.get_session(2023, 'Silverstone', 'Q')
+session = fastf1.get_session(2023, 'Silverstone', 'R')
 session.load()
 
-# Get data on driver
-hamilton = session.laps.pick_driver('HAM').pick_fastest().get_pos_data()
-
-# Make new dictionary
 telemetryData = []
 
-# Add data to new dictionary
-for i in range (0, 335):
-    #switch Z and Y axis to match unity
-    telemetryData.append({'time' : str(hamilton.Time[i].total_seconds()), 'x' : str(hamilton.X[i]), 'y' : str(hamilton.Z[i]), 'z' : str(hamilton.Y[i])})
+# Creates array for all the drivers in the race
+drivers = pd.unique(session.laps['Driver'])
+
+# For every driver in the race, create a record with their name and telemetry data.
+for driver in drivers:
+    driverData = []
+    end = False
+    i = 0
+    while end == False:
+        if driver.Time[i].total_seconds == None:
+            end = True
+        else:
+            driverData.append({'time' : str(driver.Time[i].total_seconds()), 'x' : str(driver.X[i]), 'y' : str(driver.Z[i]), 'z' : str(driver.Y[i])})
+            ++i
+    telemetryData.append({'name' : str(driver), 'data' : str(driverData)})
+
 
 # Flask app to serve Json
 app = Flask(__name__)
