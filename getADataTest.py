@@ -14,7 +14,7 @@ drivers = session.drivers
 
 # For every driver in the race, create a record with their name and telemetry data.
 for driver in drivers:
-    dataFromApi = session.laps.pick_driver(driver)
+    dataFromApi = session.laps.pick_driver(driver).get_pos_data()
     driverData = []
     end = False
     i = 0
