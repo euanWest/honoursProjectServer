@@ -25,7 +25,7 @@ for driver in drivers:
             i = i + 1
         except:
             end = True
-    telemetryData.append({'name' : str(driver), 'data' : str(driverData)})
+    telemetryData.append({'name' : str(driver), 'data' : driverData})
 
 
 # Flask app to serve Json
