@@ -10,7 +10,7 @@ session.load()
 telemetryData = []
 
 # Creates array for all the drivers in the race
-drivers = pd.unique(session.laps['Driver'])
+drivers = session.unique(session.laps['Driver'])
 
 # For every driver in the race, create a record with their name and telemetry data.
 for driver in drivers:
