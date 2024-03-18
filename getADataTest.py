@@ -24,6 +24,7 @@ for driver in drivers:
         else:
             # swap X and Z axis so that it matches Unity.
             driverData.append({'time' : str(dataFromApi.Time[i].total_seconds()), 'x' : str(dataFromApi.X[i]), 'y' : str(dataFromApi.Z[i]), 'z' : str(dataFromApi.Y[i])})
+            print(i)
             ++i
     telemetryData.append({'name' : str(driver), 'data' : str(driverData)})
 
