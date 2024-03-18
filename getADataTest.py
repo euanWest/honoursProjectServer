@@ -14,14 +14,16 @@ drivers = session.drivers
 
 # For every driver in the race, create a record with their name and telemetry data.
 for driver in drivers:
+    dataFromApi = session.laps.pick_driver(driver)
     driverData = []
     end = False
     i = 0
     while end == False:
-        if driver.Time[i].total_seconds == None:
+        if dataFromApi.Time[i].total_seconds == None:
             end = True
         else:
-            driverData.append({'time' : str(driver.Time[i].total_seconds()), 'x' : str(driver.X[i]), 'y' : str(driver.Z[i]), 'z' : str(driver.Y[i])})
+            # swap X and Z axis so that it matches Unity.
+            driverData.append({'time' : str(dataFromApi.Time[i].total_seconds()), 'x' : str(dataFromApi.X[i]), 'y' : str(dataFromApi.Z[i]), 'z' : str(dataFromApi.Y[i])})
             ++i
     telemetryData.append({'name' : str(driver), 'data' : str(driverData)})
 
